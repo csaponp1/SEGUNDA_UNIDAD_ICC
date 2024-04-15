@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minimalist Point of Sale</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="container">
+    <div id="pos">
+      <h1>Punto de venta Doña Olguis</h1>
+      <label for="product">Producto:</label>
+
+      <!--menu:
+        Tacos de ojo
+        Tacos de tacos
+        Jeringas con helado
+        Mixtas
+        Shukos
+        Pan con aji    
+    -->
+      <input type="text" id="product" placeholder="Ingresa el nombre del producto">
+
+      <label for="price">Precio:</label>
+      <input type="text" id="price" placeholder="Ingresa el precio del producto">
+
+      <button onclick="addProduct()">Agregar al carrito</button>
+
+      <h2>Productos:</h2>
+      <ul id="productList"></ul>
+    </div>
+  </div>
+
+  <script>
+    function addProduct() {
+      /*
+      En JavaScript, var es una palabra clave utilizada para declarar una variable. H
+      istóricamente, var era la forma principal de declarar variables en JavaScript.
+      
+      */  
+      var productInput = document.getElementById("product");
+      var priceInput = document.getElementById("price");
+      var productList = document.getElementById("productList");
+
+      var product = productInput.value;
+      var price = priceInput.value;
+
+      if (product !== "" && price !== "") {
+        var listItem = document.createElement("li");
+        //concatenacion
+        listItem.textContent = product + " - $" + price;
+        productList.appendChild(listItem);
+
+        // Clear input fields
+        productInput.value = "";
+        priceInput.value = "";
+      }
+    }
+  </script>
+</body>
+</html>
